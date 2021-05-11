@@ -1,13 +1,59 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap');
+
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+ font-family: 'Roboto Mono',sans-serif;
+ background-color:darkcyan;
+ position: relative;
 }
+
+.modal-container{
+  position: absolute;
+  transform: translate(115%,12%);
+  width:400px;
+  height: 450px;
+  background-color: #fff;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  transition: transform 0.2s ease-in;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 25px;
+  align-items: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-container .modal-title{
+  margin-top: 5px !important;
+}
+
+.modal-container ul{
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-container ul li p{
+  color: blue;
+}
+
+
+
+@media(max-width:600px){
+  .modal-container{
+    transform: translate(15%,15%);
+  }
+}
+
+
+
+
+
+
+
+
