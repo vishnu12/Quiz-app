@@ -44,4 +44,5 @@ height:${props=>props.height||'30px'};
 background-color:${props=>props.color||'green'};
 color:#fff;
 padding:${props=>props.padding||'1px'};
-border-radius:5px;`
+border-radius:5px;
+display:${props=>props.display}`

@@ -7,6 +7,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './context/authContext';
 import { ModalProvider } from './context/modalContext';
+import { QuesProvider } from './context/quesContext';
+
 
 
 
@@ -15,7 +17,9 @@ ReactDOM.render(
     <Router>
       <AuthProvider>
         <ModalProvider>
-        <App />
+          <QuesProvider>
+          <App />
+          </QuesProvider>
         </ModalProvider>
       </AuthProvider>
     </Router>

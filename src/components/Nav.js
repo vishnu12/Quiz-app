@@ -6,22 +6,30 @@ import { Button } from './LoginDiv'
 import { Timer } from './Timer'
 import { Title } from './Title'
 import {ModalContext} from '../context/modalContext'
+import { QuesContext } from '../context/quesContext'
 
 
 export const Nav = () => {
  const history=useHistory()
   const {state:{user},dispatch}=useContext(AuthContext)  
   const {modalOpen,dispatch:modDispatch}=useContext(ModalContext) 
+  const {dispatch:numDispatch}=useContext(QuesContext)
 
   function logoutHandler() {
+    setTimeout(() => {
+      modDispatch({type:'OPEN'})
+    }, 1000);
       dispatch({
           type:'LOGOUT'
       })
 
+      numDispatch({
+        type:'GOTO',
+        payload:0
+      })
+
       localStorage.removeItem('user')
-      setTimeout(() => {
-        modDispatch({type:'OPEN'})
-      }, 1000);
+      
   }
 
   useEffect(()=>{
