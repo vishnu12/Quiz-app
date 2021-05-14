@@ -2,6 +2,7 @@ import React,{useContext,useEffect,useState} from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import { QuesContext } from '../context/quesContext'
+import { ExamEndPage } from '../pages/ExamEndPage'
 import { Button } from './LoginDiv'
 
 export const LoadQuestions = ({num,data}) => {
@@ -15,22 +16,38 @@ export const LoadQuestions = ({num,data}) => {
 
     const [score, setScore] = useState(0)
     const [ans, setAns] = useState('')
+    const [value, setValue] = useState(null)
+    const [change, setChange] = useState('')
+  
 
-    let objInput=data && data.correct_answers
-    const obj=Object.entries(objInput)
-    const value=obj?.map(([key,value])=>`${key}:${value}`)
-                    .filter(item=>item.includes("true"))
-                    .toLocaleString()
-                    .split('_')[1]
-    
+       function getAnswer(){
+        let objInput=data && data.correct_answers
+        if(objInput){
+        const obj=Object.entries(objInput)
+        const value=obj?.map(([key,value])=>`${key}:${value}`)
+                        .filter(item=>item.includes("true"))
+                        .toLocaleString()
+                        .split('_')[1]
+            
+                    
+         return value; 
+        }          
+    }
+
+    useEffect(()=>{
+       setValue(getAnswer())
+    },[data,num])
 
    const handleChange=(e)=>{
+       setChange(e.target)
        setAns(e.target.value)
+       
    }
 
 
     function handleClick() {  
-      if(num<=8){
+       change.checked=false 
+      if(num<9){
         if(ans===value){
             setScore(prev=>prev+1)
             setAns('')
@@ -51,12 +68,14 @@ export const LoadQuestions = ({num,data}) => {
             setScore(prev=>prev-0.25)
             setAns('')
         }  
-          history.push('/final')
+        setTimeout(()=>{
+            history.push('/final')
+        },1000)
       }
      
     }
-
-    
+   
+    localStorage.setItem('score',score)
 
     return (
         <Wrapper>
@@ -89,7 +108,7 @@ export const LoadQuestions = ({num,data}) => {
             </div>}
 
             {data?.answers.answer_d && <div className="form-check mb-2">
-                <input className="form-check-input" type="radio" name="jr" id="4" value="d" 
+                <input className="form-check-input" type="radio" name="jr" id="4" value="d"
                 onChange={handleChange}/>
                 <label className="form-check-label" htmlFor="4">
                 {data?.answers.answer_d}

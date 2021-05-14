@@ -29,7 +29,8 @@ export const Login = ({history}) => {
         <>
         <Title>Login to start the exam</Title>
         <LoginContainer>
-         <Input type="text" id="userId" className="userId" onChange={e=>setUserID(e.target.value)} />
+         <Input type="text" id="userId" className="userId" onChange={e=>setUserID(e.target.value)}
+         placeholder='Enter Your ID' />
         <FormBtn type='submit' onClick={handleSubmit}>Login</FormBtn>
         </LoginContainer>
         </>
