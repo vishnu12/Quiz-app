@@ -24,7 +24,7 @@ function handleClick() {
     <div className='modal-container'>
         <Title className='modal-title' color='blue'>Instructions</Title>
         <ul>
-            <li><p>Total 15 questions</p></li>
+            <li><p>Total 10 questions</p></li>
             <li><p>All questions to be answered</p></li>
             <li><p>Correct answer carries 1 mark</p></li>
             <li><p>Wrong answer will deduct 0.25 marks</p></li>

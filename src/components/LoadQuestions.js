@@ -8,9 +8,8 @@ import { Button } from './LoginDiv'
 export const LoadQuestions = ({num,data}) => {
     const{dispatch}=useContext(QuesContext)
     const history=useHistory()
-    const reviewProps={
+    const btnProps={
         width:'200px',
-        color:'#510580',
         display:`${num!==9?'visible':'none'}`
     }
 
@@ -45,7 +44,7 @@ export const LoadQuestions = ({num,data}) => {
    }
 
 
-    function handleClick() {  
+    function handleClick(e) {  
        change.checked=false 
       if(num<9){
         if(ans===value){
@@ -116,8 +115,7 @@ export const LoadQuestions = ({num,data}) => {
             </div>}
 
             <div className="button-div">
-                <Button {...reviewProps} onClick={()=>handleClick()}>Mark for Review</Button>
-                <Button onClick={()=>handleClick()} display={num!==9?'visible':'none'}>Submit</Button>
+                <Button onClick={()=>handleClick()} {...btnProps}>Submit</Button>
             </div>
             <Button width='95%' display={num!==9?'none':'visible'} className='final-btn'
             onClick={()=>handleClick()}>

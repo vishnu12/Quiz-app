@@ -12,13 +12,14 @@ import { QuesProvider } from './context/quesContext';
 
 
 
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
         <ModalProvider>
-          <QuesProvider>
-          <App />
+          <QuesProvider> 
+            <App />
           </QuesProvider>
         </ModalProvider>
       </AuthProvider>
